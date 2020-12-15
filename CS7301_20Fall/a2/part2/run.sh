@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# part0
+# part2
 
 export CLASSPATH="/usr/local/lib/soot-3.3.0.jar:$CLASSPATH"
 
