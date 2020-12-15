@@ -10,488 +10,488 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Java8Parser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
+    static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
-	protected static final DFA[] _decisionToDFA;
-	protected static final PredictionContextCache _sharedContextCache =
-		new PredictionContextCache();
-	public static final int
-		ABSTRACT=1, ASSERT=2, BOOLEAN=3, BREAK=4, BYTE=5, CASE=6, CATCH=7, CHAR=8, 
-		CLASS=9, CONST=10, CONTINUE=11, DEFAULT=12, DO=13, DOUBLE=14, ELSE=15, 
-		ENUM=16, EXTENDS=17, FINAL=18, FINALLY=19, FLOAT=20, FOR=21, IF=22, GOTO=23, 
-		IMPLEMENTS=24, IMPORT=25, INSTANCEOF=26, INT=27, INTERFACE=28, LONG=29, 
-		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
-		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
-		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
-		WHILE=50, IntegerLiteral=51, FloatingPointLiteral=52, BooleanLiteral=53, 
-		CharacterLiteral=54, StringLiteral=55, NullLiteral=56, LPAREN=57, RPAREN=58, 
-		LBRACE=59, RBRACE=60, LBRACK=61, RBRACK=62, SEMI=63, COMMA=64, DOT=65, 
-		ASSIGN=66, GT=67, LT=68, BANG=69, TILDE=70, QUESTION=71, COLON=72, EQUAL=73, 
-		LE=74, GE=75, NOTEQUAL=76, AND=77, OR=78, INC=79, DEC=80, ADD=81, SUB=82, 
-		MUL=83, DIV=84, BITAND=85, BITOR=86, CARET=87, MOD=88, ARROW=89, COLONCOLON=90, 
-		ADD_ASSIGN=91, SUB_ASSIGN=92, MUL_ASSIGN=93, DIV_ASSIGN=94, AND_ASSIGN=95, 
-		OR_ASSIGN=96, XOR_ASSIGN=97, MOD_ASSIGN=98, LSHIFT_ASSIGN=99, RSHIFT_ASSIGN=100, 
-		URSHIFT_ASSIGN=101, Identifier=102, AT=103, ELLIPSIS=104, WS=105, COMMENT=106, 
-		LINE_COMMENT=107;
-	public static final int
-		RULE_literal = 0, RULE_type = 1, RULE_primitiveType = 2, RULE_numericType = 3, 
-		RULE_integralType = 4, RULE_floatingPointType = 5, RULE_referenceType = 6, 
-		RULE_classOrInterfaceType = 7, RULE_classType = 8, RULE_classType_lf_classOrInterfaceType = 9, 
-		RULE_classType_lfno_classOrInterfaceType = 10, RULE_interfaceType = 11, 
-		RULE_interfaceType_lf_classOrInterfaceType = 12, RULE_interfaceType_lfno_classOrInterfaceType = 13, 
-		RULE_typeVariable = 14, RULE_arrayType = 15, RULE_dims = 16, RULE_typeParameter = 17, 
-		RULE_typeParameterModifier = 18, RULE_typeBound = 19, RULE_additionalBound = 20, 
-		RULE_typeArguments = 21, RULE_typeArgumentList = 22, RULE_typeArgument = 23, 
-		RULE_wildcard = 24, RULE_wildcardBounds = 25, RULE_packageName = 26, RULE_typeName = 27, 
-		RULE_packageOrTypeName = 28, RULE_expressionName = 29, RULE_methodName = 30, 
-		RULE_ambiguousName = 31, RULE_compilationUnit = 32, RULE_packageDeclaration = 33, 
-		RULE_packageModifier = 34, RULE_importDeclaration = 35, RULE_singleTypeImportDeclaration = 36, 
-		RULE_typeImportOnDemandDeclaration = 37, RULE_singleStaticImportDeclaration = 38, 
-		RULE_staticImportOnDemandDeclaration = 39, RULE_typeDeclaration = 40, 
-		RULE_classDeclaration = 41, RULE_normalClassDeclaration = 42, RULE_classModifier = 43, 
-		RULE_typeParameters = 44, RULE_typeParameterList = 45, RULE_superclass = 46, 
-		RULE_superinterfaces = 47, RULE_interfaceTypeList = 48, RULE_classBody = 49, 
-		RULE_classBodyDeclaration = 50, RULE_classMemberDeclaration = 51, RULE_fieldDeclaration = 52, 
-		RULE_fieldModifier = 53, RULE_variableDeclaratorList = 54, RULE_variableDeclarator = 55, 
-		RULE_variableDeclaratorId = 56, RULE_variableInitializer = 57, RULE_unannType = 58, 
-		RULE_unannPrimitiveType = 59, RULE_unannReferenceType = 60, RULE_unannClassOrInterfaceType = 61, 
-		RULE_unannClassType = 62, RULE_unannClassType_lf_unannClassOrInterfaceType = 63, 
-		RULE_unannClassType_lfno_unannClassOrInterfaceType = 64, RULE_unannInterfaceType = 65, 
-		RULE_unannInterfaceType_lf_unannClassOrInterfaceType = 66, RULE_unannInterfaceType_lfno_unannClassOrInterfaceType = 67, 
-		RULE_unannTypeVariable = 68, RULE_unannArrayType = 69, RULE_methodDeclaration = 70, 
-		RULE_methodModifier = 71, RULE_methodHeader = 72, RULE_result = 73, RULE_methodDeclarator = 74, 
-		RULE_formalParameterList = 75, RULE_formalParameters = 76, RULE_formalParameter = 77, 
-		RULE_variableModifier = 78, RULE_lastFormalParameter = 79, RULE_receiverParameter = 80, 
-		RULE_throws_ = 81, RULE_exceptionTypeList = 82, RULE_exceptionType = 83, 
-		RULE_methodBody = 84, RULE_instanceInitializer = 85, RULE_staticInitializer = 86, 
-		RULE_constructorDeclaration = 87, RULE_constructorModifier = 88, RULE_constructorDeclarator = 89, 
-		RULE_simpleTypeName = 90, RULE_constructorBody = 91, RULE_explicitConstructorInvocation = 92, 
-		RULE_enumDeclaration = 93, RULE_enumBody = 94, RULE_enumConstantList = 95, 
-		RULE_enumConstant = 96, RULE_enumConstantModifier = 97, RULE_enumBodyDeclarations = 98, 
-		RULE_interfaceDeclaration = 99, RULE_normalInterfaceDeclaration = 100, 
-		RULE_interfaceModifier = 101, RULE_extendsInterfaces = 102, RULE_interfaceBody = 103, 
-		RULE_interfaceMemberDeclaration = 104, RULE_constantDeclaration = 105, 
-		RULE_constantModifier = 106, RULE_interfaceMethodDeclaration = 107, RULE_interfaceMethodModifier = 108, 
-		RULE_annotationTypeDeclaration = 109, RULE_annotationTypeBody = 110, RULE_annotationTypeMemberDeclaration = 111, 
-		RULE_annotationTypeElementDeclaration = 112, RULE_annotationTypeElementModifier = 113, 
-		RULE_defaultValue = 114, RULE_annotation = 115, RULE_normalAnnotation = 116, 
-		RULE_elementValuePairList = 117, RULE_elementValuePair = 118, RULE_elementValue = 119, 
-		RULE_elementValueArrayInitializer = 120, RULE_elementValueList = 121, 
-		RULE_markerAnnotation = 122, RULE_singleElementAnnotation = 123, RULE_arrayInitializer = 124, 
-		RULE_variableInitializerList = 125, RULE_block = 126, RULE_blockStatements = 127, 
-		RULE_blockStatement = 128, RULE_localVariableDeclarationStatement = 129, 
-		RULE_localVariableDeclaration = 130, RULE_statement = 131, RULE_statementNoShortIf = 132, 
-		RULE_statementWithoutTrailingSubstatement = 133, RULE_emptyStatement = 134, 
-		RULE_labeledStatement = 135, RULE_labeledStatementNoShortIf = 136, RULE_expressionStatement = 137, 
-		RULE_statementExpression = 138, RULE_ifThenStatement = 139, RULE_ifThenElseStatement = 140, 
-		RULE_ifThenElseStatementNoShortIf = 141, RULE_assertStatement = 142, RULE_switchStatement = 143, 
-		RULE_switchBlock = 144, RULE_switchBlockStatementGroup = 145, RULE_switchLabels = 146, 
-		RULE_switchLabel = 147, RULE_enumConstantName = 148, RULE_whileStatement = 149, 
-		RULE_whileStatementNoShortIf = 150, RULE_doStatement = 151, RULE_forStatement = 152, 
-		RULE_forStatementNoShortIf = 153, RULE_basicForStatement = 154, RULE_basicForStatementNoShortIf = 155, 
-		RULE_forInit = 156, RULE_forUpdate = 157, RULE_statementExpressionList = 158, 
-		RULE_enhancedForStatement = 159, RULE_enhancedForStatementNoShortIf = 160, 
-		RULE_breakStatement = 161, RULE_continueStatement = 162, RULE_returnStatement = 163, 
-		RULE_throwStatement = 164, RULE_synchronizedStatement = 165, RULE_tryStatement = 166, 
-		RULE_catches = 167, RULE_catchClause = 168, RULE_catchFormalParameter = 169, 
-		RULE_catchType = 170, RULE_finally_ = 171, RULE_tryWithResourcesStatement = 172, 
-		RULE_resourceSpecification = 173, RULE_resourceList = 174, RULE_resource = 175, 
-		RULE_primary = 176, RULE_primaryNoNewArray = 177, RULE_primaryNoNewArray_lf_arrayAccess = 178, 
-		RULE_primaryNoNewArray_lfno_arrayAccess = 179, RULE_primaryNoNewArray_lf_primary = 180, 
-		RULE_primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary = 181, RULE_primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary = 182, 
-		RULE_primaryNoNewArray_lfno_primary = 183, RULE_primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary = 184, 
-		RULE_primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary = 185, 
-		RULE_classInstanceCreationExpression = 186, RULE_classInstanceCreationExpression_lf_primary = 187, 
-		RULE_classInstanceCreationExpression_lfno_primary = 188, RULE_typeArgumentsOrDiamond = 189, 
-		RULE_fieldAccess = 190, RULE_fieldAccess_lf_primary = 191, RULE_fieldAccess_lfno_primary = 192, 
-		RULE_arrayAccess = 193, RULE_arrayAccess_lf_primary = 194, RULE_arrayAccess_lfno_primary = 195, 
-		RULE_methodInvocation = 196, RULE_methodInvocation_lf_primary = 197, RULE_methodInvocation_lfno_primary = 198, 
-		RULE_argumentList = 199, RULE_methodReference = 200, RULE_methodReference_lf_primary = 201, 
-		RULE_methodReference_lfno_primary = 202, RULE_arrayCreationExpression = 203, 
-		RULE_dimExprs = 204, RULE_dimExpr = 205, RULE_constantExpression = 206, 
-		RULE_expression = 207, RULE_lambdaExpression = 208, RULE_lambdaParameters = 209, 
-		RULE_inferredFormalParameterList = 210, RULE_lambdaBody = 211, RULE_assignmentExpression = 212, 
-		RULE_assignment = 213, RULE_leftHandSide = 214, RULE_assignmentOperator = 215, 
-		RULE_conditionalExpression = 216, RULE_conditionalOrExpression = 217, 
-		RULE_conditionalAndExpression = 218, RULE_inclusiveOrExpression = 219, 
-		RULE_exclusiveOrExpression = 220, RULE_andExpression = 221, RULE_equalityExpression = 222, 
-		RULE_relationalExpression = 223, RULE_shiftExpression = 224, RULE_additiveExpression = 225, 
-		RULE_multiplicativeExpression = 226, RULE_unaryExpression = 227, RULE_preIncrementExpression = 228, 
-		RULE_preDecrementExpression = 229, RULE_unaryExpressionNotPlusMinus = 230, 
-		RULE_postfixExpression = 231, RULE_postIncrementExpression = 232, RULE_postIncrementExpression_lf_postfixExpression = 233, 
-		RULE_postDecrementExpression = 234, RULE_postDecrementExpression_lf_postfixExpression = 235, 
-		RULE_castExpression = 236;
-	public static final String[] ruleNames = {
-		"literal", "type", "primitiveType", "numericType", "integralType", "floatingPointType", 
-		"referenceType", "classOrInterfaceType", "classType", "classType_lf_classOrInterfaceType", 
-		"classType_lfno_classOrInterfaceType", "interfaceType", "interfaceType_lf_classOrInterfaceType", 
-		"interfaceType_lfno_classOrInterfaceType", "typeVariable", "arrayType", 
-		"dims", "typeParameter", "typeParameterModifier", "typeBound", "additionalBound", 
-		"typeArguments", "typeArgumentList", "typeArgument", "wildcard", "wildcardBounds", 
-		"packageName", "typeName", "packageOrTypeName", "expressionName", "methodName", 
-		"ambiguousName", "compilationUnit", "packageDeclaration", "packageModifier", 
-		"importDeclaration", "singleTypeImportDeclaration", "typeImportOnDemandDeclaration", 
-		"singleStaticImportDeclaration", "staticImportOnDemandDeclaration", "typeDeclaration", 
-		"classDeclaration", "normalClassDeclaration", "classModifier", "typeParameters", 
-		"typeParameterList", "superclass", "superinterfaces", "interfaceTypeList", 
-		"classBody", "classBodyDeclaration", "classMemberDeclaration", "fieldDeclaration", 
-		"fieldModifier", "variableDeclaratorList", "variableDeclarator", "variableDeclaratorId", 
-		"variableInitializer", "unannType", "unannPrimitiveType", "unannReferenceType", 
-		"unannClassOrInterfaceType", "unannClassType", "unannClassType_lf_unannClassOrInterfaceType", 
-		"unannClassType_lfno_unannClassOrInterfaceType", "unannInterfaceType", 
-		"unannInterfaceType_lf_unannClassOrInterfaceType", "unannInterfaceType_lfno_unannClassOrInterfaceType", 
-		"unannTypeVariable", "unannArrayType", "methodDeclaration", "methodModifier", 
-		"methodHeader", "result", "methodDeclarator", "formalParameterList", "formalParameters", 
-		"formalParameter", "variableModifier", "lastFormalParameter", "receiverParameter", 
-		"throws_", "exceptionTypeList", "exceptionType", "methodBody", "instanceInitializer", 
-		"staticInitializer", "constructorDeclaration", "constructorModifier", 
-		"constructorDeclarator", "simpleTypeName", "constructorBody", "explicitConstructorInvocation", 
-		"enumDeclaration", "enumBody", "enumConstantList", "enumConstant", "enumConstantModifier", 
-		"enumBodyDeclarations", "interfaceDeclaration", "normalInterfaceDeclaration", 
-		"interfaceModifier", "extendsInterfaces", "interfaceBody", "interfaceMemberDeclaration", 
-		"constantDeclaration", "constantModifier", "interfaceMethodDeclaration", 
-		"interfaceMethodModifier", "annotationTypeDeclaration", "annotationTypeBody", 
-		"annotationTypeMemberDeclaration", "annotationTypeElementDeclaration", 
-		"annotationTypeElementModifier", "defaultValue", "annotation", "normalAnnotation", 
-		"elementValuePairList", "elementValuePair", "elementValue", "elementValueArrayInitializer", 
-		"elementValueList", "markerAnnotation", "singleElementAnnotation", "arrayInitializer", 
-		"variableInitializerList", "block", "blockStatements", "blockStatement", 
-		"localVariableDeclarationStatement", "localVariableDeclaration", "statement", 
-		"statementNoShortIf", "statementWithoutTrailingSubstatement", "emptyStatement", 
-		"labeledStatement", "labeledStatementNoShortIf", "expressionStatement", 
-		"statementExpression", "ifThenStatement", "ifThenElseStatement", "ifThenElseStatementNoShortIf", 
-		"assertStatement", "switchStatement", "switchBlock", "switchBlockStatementGroup", 
-		"switchLabels", "switchLabel", "enumConstantName", "whileStatement", "whileStatementNoShortIf", 
-		"doStatement", "forStatement", "forStatementNoShortIf", "basicForStatement", 
-		"basicForStatementNoShortIf", "forInit", "forUpdate", "statementExpressionList", 
-		"enhancedForStatement", "enhancedForStatementNoShortIf", "breakStatement", 
-		"continueStatement", "returnStatement", "throwStatement", "synchronizedStatement", 
-		"tryStatement", "catches", "catchClause", "catchFormalParameter", "catchType", 
-		"finally_", "tryWithResourcesStatement", "resourceSpecification", "resourceList", 
-		"resource", "primary", "primaryNoNewArray", "primaryNoNewArray_lf_arrayAccess", 
-		"primaryNoNewArray_lfno_arrayAccess", "primaryNoNewArray_lf_primary", 
-		"primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary", "primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary", 
-		"primaryNoNewArray_lfno_primary", "primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary", 
-		"primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary", "classInstanceCreationExpression", 
-		"classInstanceCreationExpression_lf_primary", "classInstanceCreationExpression_lfno_primary", 
-		"typeArgumentsOrDiamond", "fieldAccess", "fieldAccess_lf_primary", "fieldAccess_lfno_primary", 
-		"arrayAccess", "arrayAccess_lf_primary", "arrayAccess_lfno_primary", "methodInvocation", 
-		"methodInvocation_lf_primary", "methodInvocation_lfno_primary", "argumentList", 
-		"methodReference", "methodReference_lf_primary", "methodReference_lfno_primary", 
-		"arrayCreationExpression", "dimExprs", "dimExpr", "constantExpression", 
-		"expression", "lambdaExpression", "lambdaParameters", "inferredFormalParameterList", 
-		"lambdaBody", "assignmentExpression", "assignment", "leftHandSide", "assignmentOperator", 
-		"conditionalExpression", "conditionalOrExpression", "conditionalAndExpression", 
-		"inclusiveOrExpression", "exclusiveOrExpression", "andExpression", "equalityExpression", 
-		"relationalExpression", "shiftExpression", "additiveExpression", "multiplicativeExpression", 
-		"unaryExpression", "preIncrementExpression", "preDecrementExpression", 
-		"unaryExpressionNotPlusMinus", "postfixExpression", "postIncrementExpression", 
-		"postIncrementExpression_lf_postfixExpression", "postDecrementExpression", 
-		"postDecrementExpression_lf_postfixExpression", "castExpression"
-	};
+    protected static final DFA[] _decisionToDFA;
+    protected static final PredictionContextCache _sharedContextCache =
+        new PredictionContextCache();
+    public static final int
+        ABSTRACT=1, ASSERT=2, BOOLEAN=3, BREAK=4, BYTE=5, CASE=6, CATCH=7, CHAR=8, 
+        CLASS=9, CONST=10, CONTINUE=11, DEFAULT=12, DO=13, DOUBLE=14, ELSE=15, 
+        ENUM=16, EXTENDS=17, FINAL=18, FINALLY=19, FLOAT=20, FOR=21, IF=22, GOTO=23, 
+        IMPLEMENTS=24, IMPORT=25, INSTANCEOF=26, INT=27, INTERFACE=28, LONG=29, 
+        NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
+        SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
+        THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
+        WHILE=50, IntegerLiteral=51, FloatingPointLiteral=52, BooleanLiteral=53, 
+        CharacterLiteral=54, StringLiteral=55, NullLiteral=56, LPAREN=57, RPAREN=58, 
+        LBRACE=59, RBRACE=60, LBRACK=61, RBRACK=62, SEMI=63, COMMA=64, DOT=65, 
+        ASSIGN=66, GT=67, LT=68, BANG=69, TILDE=70, QUESTION=71, COLON=72, EQUAL=73, 
+        LE=74, GE=75, NOTEQUAL=76, AND=77, OR=78, INC=79, DEC=80, ADD=81, SUB=82, 
+        MUL=83, DIV=84, BITAND=85, BITOR=86, CARET=87, MOD=88, ARROW=89, COLONCOLON=90, 
+        ADD_ASSIGN=91, SUB_ASSIGN=92, MUL_ASSIGN=93, DIV_ASSIGN=94, AND_ASSIGN=95, 
+        OR_ASSIGN=96, XOR_ASSIGN=97, MOD_ASSIGN=98, LSHIFT_ASSIGN=99, RSHIFT_ASSIGN=100, 
+        URSHIFT_ASSIGN=101, Identifier=102, AT=103, ELLIPSIS=104, WS=105, COMMENT=106, 
+        LINE_COMMENT=107;
+    public static final int
+        RULE_literal = 0, RULE_type = 1, RULE_primitiveType = 2, RULE_numericType = 3, 
+        RULE_integralType = 4, RULE_floatingPointType = 5, RULE_referenceType = 6, 
+        RULE_classOrInterfaceType = 7, RULE_classType = 8, RULE_classType_lf_classOrInterfaceType = 9, 
+        RULE_classType_lfno_classOrInterfaceType = 10, RULE_interfaceType = 11, 
+        RULE_interfaceType_lf_classOrInterfaceType = 12, RULE_interfaceType_lfno_classOrInterfaceType = 13, 
+        RULE_typeVariable = 14, RULE_arrayType = 15, RULE_dims = 16, RULE_typeParameter = 17, 
+        RULE_typeParameterModifier = 18, RULE_typeBound = 19, RULE_additionalBound = 20, 
+        RULE_typeArguments = 21, RULE_typeArgumentList = 22, RULE_typeArgument = 23, 
+        RULE_wildcard = 24, RULE_wildcardBounds = 25, RULE_packageName = 26, RULE_typeName = 27, 
+        RULE_packageOrTypeName = 28, RULE_expressionName = 29, RULE_methodName = 30, 
+        RULE_ambiguousName = 31, RULE_compilationUnit = 32, RULE_packageDeclaration = 33, 
+        RULE_packageModifier = 34, RULE_importDeclaration = 35, RULE_singleTypeImportDeclaration = 36, 
+        RULE_typeImportOnDemandDeclaration = 37, RULE_singleStaticImportDeclaration = 38, 
+        RULE_staticImportOnDemandDeclaration = 39, RULE_typeDeclaration = 40, 
+        RULE_classDeclaration = 41, RULE_normalClassDeclaration = 42, RULE_classModifier = 43, 
+        RULE_typeParameters = 44, RULE_typeParameterList = 45, RULE_superclass = 46, 
+        RULE_superinterfaces = 47, RULE_interfaceTypeList = 48, RULE_classBody = 49, 
+        RULE_classBodyDeclaration = 50, RULE_classMemberDeclaration = 51, RULE_fieldDeclaration = 52, 
+        RULE_fieldModifier = 53, RULE_variableDeclaratorList = 54, RULE_variableDeclarator = 55, 
+        RULE_variableDeclaratorId = 56, RULE_variableInitializer = 57, RULE_unannType = 58, 
+        RULE_unannPrimitiveType = 59, RULE_unannReferenceType = 60, RULE_unannClassOrInterfaceType = 61, 
+        RULE_unannClassType = 62, RULE_unannClassType_lf_unannClassOrInterfaceType = 63, 
+        RULE_unannClassType_lfno_unannClassOrInterfaceType = 64, RULE_unannInterfaceType = 65, 
+        RULE_unannInterfaceType_lf_unannClassOrInterfaceType = 66, RULE_unannInterfaceType_lfno_unannClassOrInterfaceType = 67, 
+        RULE_unannTypeVariable = 68, RULE_unannArrayType = 69, RULE_methodDeclaration = 70, 
+        RULE_methodModifier = 71, RULE_methodHeader = 72, RULE_result = 73, RULE_methodDeclarator = 74, 
+        RULE_formalParameterList = 75, RULE_formalParameters = 76, RULE_formalParameter = 77, 
+        RULE_variableModifier = 78, RULE_lastFormalParameter = 79, RULE_receiverParameter = 80, 
+        RULE_throws_ = 81, RULE_exceptionTypeList = 82, RULE_exceptionType = 83, 
+        RULE_methodBody = 84, RULE_instanceInitializer = 85, RULE_staticInitializer = 86, 
+        RULE_constructorDeclaration = 87, RULE_constructorModifier = 88, RULE_constructorDeclarator = 89, 
+        RULE_simpleTypeName = 90, RULE_constructorBody = 91, RULE_explicitConstructorInvocation = 92, 
+        RULE_enumDeclaration = 93, RULE_enumBody = 94, RULE_enumConstantList = 95, 
+        RULE_enumConstant = 96, RULE_enumConstantModifier = 97, RULE_enumBodyDeclarations = 98, 
+        RULE_interfaceDeclaration = 99, RULE_normalInterfaceDeclaration = 100, 
+        RULE_interfaceModifier = 101, RULE_extendsInterfaces = 102, RULE_interfaceBody = 103, 
+        RULE_interfaceMemberDeclaration = 104, RULE_constantDeclaration = 105, 
+        RULE_constantModifier = 106, RULE_interfaceMethodDeclaration = 107, RULE_interfaceMethodModifier = 108, 
+        RULE_annotationTypeDeclaration = 109, RULE_annotationTypeBody = 110, RULE_annotationTypeMemberDeclaration = 111, 
+        RULE_annotationTypeElementDeclaration = 112, RULE_annotationTypeElementModifier = 113, 
+        RULE_defaultValue = 114, RULE_annotation = 115, RULE_normalAnnotation = 116, 
+        RULE_elementValuePairList = 117, RULE_elementValuePair = 118, RULE_elementValue = 119, 
+        RULE_elementValueArrayInitializer = 120, RULE_elementValueList = 121, 
+        RULE_markerAnnotation = 122, RULE_singleElementAnnotation = 123, RULE_arrayInitializer = 124, 
+        RULE_variableInitializerList = 125, RULE_block = 126, RULE_blockStatements = 127, 
+        RULE_blockStatement = 128, RULE_localVariableDeclarationStatement = 129, 
+        RULE_localVariableDeclaration = 130, RULE_statement = 131, RULE_statementNoShortIf = 132, 
+        RULE_statementWithoutTrailingSubstatement = 133, RULE_emptyStatement = 134, 
+        RULE_labeledStatement = 135, RULE_labeledStatementNoShortIf = 136, RULE_expressionStatement = 137, 
+        RULE_statementExpression = 138, RULE_ifThenStatement = 139, RULE_ifThenElseStatement = 140, 
+        RULE_ifThenElseStatementNoShortIf = 141, RULE_assertStatement = 142, RULE_switchStatement = 143, 
+        RULE_switchBlock = 144, RULE_switchBlockStatementGroup = 145, RULE_switchLabels = 146, 
+        RULE_switchLabel = 147, RULE_enumConstantName = 148, RULE_whileStatement = 149, 
+        RULE_whileStatementNoShortIf = 150, RULE_doStatement = 151, RULE_forStatement = 152, 
+        RULE_forStatementNoShortIf = 153, RULE_basicForStatement = 154, RULE_basicForStatementNoShortIf = 155, 
+        RULE_forInit = 156, RULE_forUpdate = 157, RULE_statementExpressionList = 158, 
+        RULE_enhancedForStatement = 159, RULE_enhancedForStatementNoShortIf = 160, 
+        RULE_breakStatement = 161, RULE_continueStatement = 162, RULE_returnStatement = 163, 
+        RULE_throwStatement = 164, RULE_synchronizedStatement = 165, RULE_tryStatement = 166, 
+        RULE_catches = 167, RULE_catchClause = 168, RULE_catchFormalParameter = 169, 
+        RULE_catchType = 170, RULE_finally_ = 171, RULE_tryWithResourcesStatement = 172, 
+        RULE_resourceSpecification = 173, RULE_resourceList = 174, RULE_resource = 175, 
+        RULE_primary = 176, RULE_primaryNoNewArray = 177, RULE_primaryNoNewArray_lf_arrayAccess = 178, 
+        RULE_primaryNoNewArray_lfno_arrayAccess = 179, RULE_primaryNoNewArray_lf_primary = 180, 
+        RULE_primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary = 181, RULE_primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary = 182, 
+        RULE_primaryNoNewArray_lfno_primary = 183, RULE_primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary = 184, 
+        RULE_primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary = 185, 
+        RULE_classInstanceCreationExpression = 186, RULE_classInstanceCreationExpression_lf_primary = 187, 
+        RULE_classInstanceCreationExpression_lfno_primary = 188, RULE_typeArgumentsOrDiamond = 189, 
+        RULE_fieldAccess = 190, RULE_fieldAccess_lf_primary = 191, RULE_fieldAccess_lfno_primary = 192, 
+        RULE_arrayAccess = 193, RULE_arrayAccess_lf_primary = 194, RULE_arrayAccess_lfno_primary = 195, 
+        RULE_methodInvocation = 196, RULE_methodInvocation_lf_primary = 197, RULE_methodInvocation_lfno_primary = 198, 
+        RULE_argumentList = 199, RULE_methodReference = 200, RULE_methodReference_lf_primary = 201, 
+        RULE_methodReference_lfno_primary = 202, RULE_arrayCreationExpression = 203, 
+        RULE_dimExprs = 204, RULE_dimExpr = 205, RULE_constantExpression = 206, 
+        RULE_expression = 207, RULE_lambdaExpression = 208, RULE_lambdaParameters = 209, 
+        RULE_inferredFormalParameterList = 210, RULE_lambdaBody = 211, RULE_assignmentExpression = 212, 
+        RULE_assignment = 213, RULE_leftHandSide = 214, RULE_assignmentOperator = 215, 
+        RULE_conditionalExpression = 216, RULE_conditionalOrExpression = 217, 
+        RULE_conditionalAndExpression = 218, RULE_inclusiveOrExpression = 219, 
+        RULE_exclusiveOrExpression = 220, RULE_andExpression = 221, RULE_equalityExpression = 222, 
+        RULE_relationalExpression = 223, RULE_shiftExpression = 224, RULE_additiveExpression = 225, 
+        RULE_multiplicativeExpression = 226, RULE_unaryExpression = 227, RULE_preIncrementExpression = 228, 
+        RULE_preDecrementExpression = 229, RULE_unaryExpressionNotPlusMinus = 230, 
+        RULE_postfixExpression = 231, RULE_postIncrementExpression = 232, RULE_postIncrementExpression_lf_postfixExpression = 233, 
+        RULE_postDecrementExpression = 234, RULE_postDecrementExpression_lf_postfixExpression = 235, 
+        RULE_castExpression = 236;
+    public static final String[] ruleNames = {
+        "literal", "type", "primitiveType", "numericType", "integralType", "floatingPointType", 
+        "referenceType", "classOrInterfaceType", "classType", "classType_lf_classOrInterfaceType", 
+        "classType_lfno_classOrInterfaceType", "interfaceType", "interfaceType_lf_classOrInterfaceType", 
+        "interfaceType_lfno_classOrInterfaceType", "typeVariable", "arrayType", 
+        "dims", "typeParameter", "typeParameterModifier", "typeBound", "additionalBound", 
+        "typeArguments", "typeArgumentList", "typeArgument", "wildcard", "wildcardBounds", 
+        "packageName", "typeName", "packageOrTypeName", "expressionName", "methodName", 
+        "ambiguousName", "compilationUnit", "packageDeclaration", "packageModifier", 
+        "importDeclaration", "singleTypeImportDeclaration", "typeImportOnDemandDeclaration", 
+        "singleStaticImportDeclaration", "staticImportOnDemandDeclaration", "typeDeclaration", 
+        "classDeclaration", "normalClassDeclaration", "classModifier", "typeParameters", 
+        "typeParameterList", "superclass", "superinterfaces", "interfaceTypeList", 
+        "classBody", "classBodyDeclaration", "classMemberDeclaration", "fieldDeclaration", 
+        "fieldModifier", "variableDeclaratorList", "variableDeclarator", "variableDeclaratorId", 
+        "variableInitializer", "unannType", "unannPrimitiveType", "unannReferenceType", 
+        "unannClassOrInterfaceType", "unannClassType", "unannClassType_lf_unannClassOrInterfaceType", 
+        "unannClassType_lfno_unannClassOrInterfaceType", "unannInterfaceType", 
+        "unannInterfaceType_lf_unannClassOrInterfaceType", "unannInterfaceType_lfno_unannClassOrInterfaceType", 
+        "unannTypeVariable", "unannArrayType", "methodDeclaration", "methodModifier", 
+        "methodHeader", "result", "methodDeclarator", "formalParameterList", "formalParameters", 
+        "formalParameter", "variableModifier", "lastFormalParameter", "receiverParameter", 
+        "throws_", "exceptionTypeList", "exceptionType", "methodBody", "instanceInitializer", 
+        "staticInitializer", "constructorDeclaration", "constructorModifier", 
+        "constructorDeclarator", "simpleTypeName", "constructorBody", "explicitConstructorInvocation", 
+        "enumDeclaration", "enumBody", "enumConstantList", "enumConstant", "enumConstantModifier", 
+        "enumBodyDeclarations", "interfaceDeclaration", "normalInterfaceDeclaration", 
+        "interfaceModifier", "extendsInterfaces", "interfaceBody", "interfaceMemberDeclaration", 
+        "constantDeclaration", "constantModifier", "interfaceMethodDeclaration", 
+        "interfaceMethodModifier", "annotationTypeDeclaration", "annotationTypeBody", 
+        "annotationTypeMemberDeclaration", "annotationTypeElementDeclaration", 
+        "annotationTypeElementModifier", "defaultValue", "annotation", "normalAnnotation", 
+        "elementValuePairList", "elementValuePair", "elementValue", "elementValueArrayInitializer", 
+        "elementValueList", "markerAnnotation", "singleElementAnnotation", "arrayInitializer", 
+        "variableInitializerList", "block", "blockStatements", "blockStatement", 
+        "localVariableDeclarationStatement", "localVariableDeclaration", "statement", 
+        "statementNoShortIf", "statementWithoutTrailingSubstatement", "emptyStatement", 
+        "labeledStatement", "labeledStatementNoShortIf", "expressionStatement", 
+        "statementExpression", "ifThenStatement", "ifThenElseStatement", "ifThenElseStatementNoShortIf", 
+        "assertStatement", "switchStatement", "switchBlock", "switchBlockStatementGroup", 
+        "switchLabels", "switchLabel", "enumConstantName", "whileStatement", "whileStatementNoShortIf", 
+        "doStatement", "forStatement", "forStatementNoShortIf", "basicForStatement", 
+        "basicForStatementNoShortIf", "forInit", "forUpdate", "statementExpressionList", 
+        "enhancedForStatement", "enhancedForStatementNoShortIf", "breakStatement", 
+        "continueStatement", "returnStatement", "throwStatement", "synchronizedStatement", 
+        "tryStatement", "catches", "catchClause", "catchFormalParameter", "catchType", 
+        "finally_", "tryWithResourcesStatement", "resourceSpecification", "resourceList", 
+        "resource", "primary", "primaryNoNewArray", "primaryNoNewArray_lf_arrayAccess", 
+        "primaryNoNewArray_lfno_arrayAccess", "primaryNoNewArray_lf_primary", 
+        "primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary", "primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary", 
+        "primaryNoNewArray_lfno_primary", "primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary", 
+        "primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary", "classInstanceCreationExpression", 
+        "classInstanceCreationExpression_lf_primary", "classInstanceCreationExpression_lfno_primary", 
+        "typeArgumentsOrDiamond", "fieldAccess", "fieldAccess_lf_primary", "fieldAccess_lfno_primary", 
+        "arrayAccess", "arrayAccess_lf_primary", "arrayAccess_lfno_primary", "methodInvocation", 
+        "methodInvocation_lf_primary", "methodInvocation_lfno_primary", "argumentList", 
+        "methodReference", "methodReference_lf_primary", "methodReference_lfno_primary", 
+        "arrayCreationExpression", "dimExprs", "dimExpr", "constantExpression", 
+        "expression", "lambdaExpression", "lambdaParameters", "inferredFormalParameterList", 
+        "lambdaBody", "assignmentExpression", "assignment", "leftHandSide", "assignmentOperator", 
+        "conditionalExpression", "conditionalOrExpression", "conditionalAndExpression", 
+        "inclusiveOrExpression", "exclusiveOrExpression", "andExpression", "equalityExpression", 
+        "relationalExpression", "shiftExpression", "additiveExpression", "multiplicativeExpression", 
+        "unaryExpression", "preIncrementExpression", "preDecrementExpression", 
+        "unaryExpressionNotPlusMinus", "postfixExpression", "postIncrementExpression", 
+        "postIncrementExpression_lf_postfixExpression", "postDecrementExpression", 
+        "postDecrementExpression_lf_postfixExpression", "castExpression"
+    };
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'abstract'", "'assert'", "'boolean'", "'break'", "'byte'", "'case'", 
-		"'catch'", "'char'", "'class'", "'const'", "'continue'", "'default'", 
-		"'do'", "'double'", "'else'", "'enum'", "'extends'", "'final'", "'finally'", 
-		"'float'", "'for'", "'if'", "'goto'", "'implements'", "'import'", "'instanceof'", 
-		"'int'", "'interface'", "'long'", "'native'", "'new'", "'package'", "'private'", 
-		"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
-		"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
-		"'transient'", "'try'", "'void'", "'volatile'", "'while'", null, null, 
-		null, null, null, "'null'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
-		"';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", "'~'", "'?'", "':'", 
-		"'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", 
-		"'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", "'->'", "'::'", "'+='", 
-		"'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='", "'>>='", 
-		"'>>>='", null, "'@'", "'...'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", "CASE", "CATCH", 
-		"CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE", 
-		"ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", "IF", "GOTO", "IMPLEMENTS", 
-		"IMPORT", "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE", "NEW", "PACKAGE", 
-		"PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", "STATIC", "STRICTFP", 
-		"SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", "THROWS", "TRANSIENT", 
-		"TRY", "VOID", "VOLATILE", "WHILE", "IntegerLiteral", "FloatingPointLiteral", 
-		"BooleanLiteral", "CharacterLiteral", "StringLiteral", "NullLiteral", 
-		"LPAREN", "RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", 
-		"DOT", "ASSIGN", "GT", "LT", "BANG", "TILDE", "QUESTION", "COLON", "EQUAL", 
-		"LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL", 
-		"DIV", "BITAND", "BITOR", "CARET", "MOD", "ARROW", "COLONCOLON", "ADD_ASSIGN", 
-		"SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
-		"MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "Identifier", 
-		"AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+    private static final String[] _LITERAL_NAMES = {
+        null, "'abstract'", "'assert'", "'boolean'", "'break'", "'byte'", "'case'", 
+        "'catch'", "'char'", "'class'", "'const'", "'continue'", "'default'", 
+        "'do'", "'double'", "'else'", "'enum'", "'extends'", "'final'", "'finally'", 
+        "'float'", "'for'", "'if'", "'goto'", "'implements'", "'import'", "'instanceof'", 
+        "'int'", "'interface'", "'long'", "'native'", "'new'", "'package'", "'private'", 
+        "'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
+        "'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
+        "'transient'", "'try'", "'void'", "'volatile'", "'while'", null, null, 
+        null, null, null, "'null'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
+        "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", "'~'", "'?'", "':'", 
+        "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", 
+        "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", "'->'", "'::'", "'+='", 
+        "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='", "'>>='", 
+        "'>>>='", null, "'@'", "'...'"
+    };
+    private static final String[] _SYMBOLIC_NAMES = {
+        null, "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", "CASE", "CATCH", 
+        "CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE", 
+        "ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", "IF", "GOTO", "IMPLEMENTS", 
+        "IMPORT", "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE", "NEW", "PACKAGE", 
+        "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", "STATIC", "STRICTFP", 
+        "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", "THROWS", "TRANSIENT", 
+        "TRY", "VOID", "VOLATILE", "WHILE", "IntegerLiteral", "FloatingPointLiteral", 
+        "BooleanLiteral", "CharacterLiteral", "StringLiteral", "NullLiteral", 
+        "LPAREN", "RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", 
+        "DOT", "ASSIGN", "GT", "LT", "BANG", "TILDE", "QUESTION", "COLON", "EQUAL", 
+        "LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL", 
+        "DIV", "BITAND", "BITOR", "CARET", "MOD", "ARROW", "COLONCOLON", "ADD_ASSIGN", 
+        "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
+        "MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "Identifier", 
+        "AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT"
+    };
+    public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
+    /**
+     * @deprecated Use {@link #VOCABULARY} instead.
+     */
+    @Deprecated
+    public static final String[] tokenNames;
+    static {
+        tokenNames = new String[_SYMBOLIC_NAMES.length];
+        for (int i = 0; i < tokenNames.length; i++) {
+            tokenNames[i] = VOCABULARY.getLiteralName(i);
+            if (tokenNames[i] == null) {
+                tokenNames[i] = VOCABULARY.getSymbolicName(i);
+            }
 
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
+            if (tokenNames[i] == null) {
+                tokenNames[i] = "<INVALID>";
+            }
+        }
+    }
 
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
+    @Override
+    @Deprecated
+    public String[] getTokenNames() {
+        return tokenNames;
+    }
 
-	@Override
+    @Override
 
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
+    public Vocabulary getVocabulary() {
+        return VOCABULARY;
+    }
 
-	@Override
-	public String getGrammarFileName() { return "Java8.g4"; }
+    @Override
+    public String getGrammarFileName() { return "Java8.g4"; }
 
-	@Override
-	public String[] getRuleNames() { return ruleNames; }
+    @Override
+    public String[] getRuleNames() { return ruleNames; }
 
-	@Override
-	public String getSerializedATN() { return _serializedATN; }
+    @Override
+    public String getSerializedATN() { return _serializedATN; }
 
-	@Override
-	public ATN getATN() { return _ATN; }
+    @Override
+    public ATN getATN() { return _ATN; }
 
-	public Java8Parser(TokenStream input) {
-		super(input);
-		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
-	}
-	public static class LiteralContext extends ParserRuleContext {
-		public TerminalNode IntegerLiteral() { return getToken(Java8Parser.IntegerLiteral, 0); }
-		public TerminalNode FloatingPointLiteral() { return getToken(Java8Parser.FloatingPointLiteral, 0); }
-		public TerminalNode BooleanLiteral() { return getToken(Java8Parser.BooleanLiteral, 0); }
-		public TerminalNode CharacterLiteral() { return getToken(Java8Parser.CharacterLiteral, 0); }
-		public TerminalNode StringLiteral() { return getToken(Java8Parser.StringLiteral, 0); }
-		public TerminalNode NullLiteral() { return getToken(Java8Parser.NullLiteral, 0); }
-		public LiteralContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_literal; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitLiteral(this);
-		}
-	}
+    public Java8Parser(TokenStream input) {
+        super(input);
+        _interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
+    }
+    public static class LiteralContext extends ParserRuleContext {
+        public TerminalNode IntegerLiteral() { return getToken(Java8Parser.IntegerLiteral, 0); }
+        public TerminalNode FloatingPointLiteral() { return getToken(Java8Parser.FloatingPointLiteral, 0); }
+        public TerminalNode BooleanLiteral() { return getToken(Java8Parser.BooleanLiteral, 0); }
+        public TerminalNode CharacterLiteral() { return getToken(Java8Parser.CharacterLiteral, 0); }
+        public TerminalNode StringLiteral() { return getToken(Java8Parser.StringLiteral, 0); }
+        public TerminalNode NullLiteral() { return getToken(Java8Parser.NullLiteral, 0); }
+        public LiteralContext(ParserRuleContext parent, int invokingState) {
+            super(parent, invokingState);
+        }
+        @Override public int getRuleIndex() { return RULE_literal; }
+        @Override
+        public void enterRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterLiteral(this);
+        }
+        @Override
+        public void exitRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitLiteral(this);
+        }
+    }
 
-	public final LiteralContext literal() throws RecognitionException {
-		LiteralContext _localctx = new LiteralContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_literal);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(474);
-			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerLiteral) | (1L << FloatingPointLiteral) | (1L << BooleanLiteral) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << NullLiteral))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
+    public final LiteralContext literal() throws RecognitionException {
+        LiteralContext _localctx = new LiteralContext(_ctx, getState());
+        enterRule(_localctx, 0, RULE_literal);
+        int _la;
+        try {
+            enterOuterAlt(_localctx, 1);
+            {
+            setState(474);
+            _la = _input.LA(1);
+            if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerLiteral) | (1L << FloatingPointLiteral) | (1L << BooleanLiteral) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << NullLiteral))) != 0)) ) {
+            _errHandler.recoverInline(this);
+            }
+            else {
+                if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+                _errHandler.reportMatch(this);
+                consume();
+            }
+            }
+        }
+        catch (RecognitionException re) {
+            _localctx.exception = re;
+            _errHandler.reportError(this, re);
+            _errHandler.recover(this, re);
+        }
+        finally {
+            exitRule();
+        }
+        return _localctx;
+    }
 
-	public static class TypeContext extends ParserRuleContext {
-		public PrimitiveTypeContext primitiveType() {
-			return getRuleContext(PrimitiveTypeContext.class,0);
-		}
-		public ReferenceTypeContext referenceType() {
-			return getRuleContext(ReferenceTypeContext.class,0);
-		}
-		public TypeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_type; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterType(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitType(this);
-		}
-	}
+    public static class TypeContext extends ParserRuleContext {
+        public PrimitiveTypeContext primitiveType() {
+            return getRuleContext(PrimitiveTypeContext.class,0);
+        }
+        public ReferenceTypeContext referenceType() {
+            return getRuleContext(ReferenceTypeContext.class,0);
+        }
+        public TypeContext(ParserRuleContext parent, int invokingState) {
+            super(parent, invokingState);
+        }
+        @Override public int getRuleIndex() { return RULE_type; }
+        @Override
+        public void enterRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterType(this);
+        }
+        @Override
+        public void exitRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitType(this);
+        }
+    }
 
-	public final TypeContext type() throws RecognitionException {
-		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_type);
-		try {
-			setState(478);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(476);
-				primitiveType();
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(477);
-				referenceType();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
+    public final TypeContext type() throws RecognitionException {
+        TypeContext _localctx = new TypeContext(_ctx, getState());
+        enterRule(_localctx, 2, RULE_type);
+        try {
+            setState(478);
+            _errHandler.sync(this);
+            switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
+            case 1:
+                enterOuterAlt(_localctx, 1);
+                {
+                setState(476);
+                primitiveType();
+                }
+                break;
+            case 2:
+                enterOuterAlt(_localctx, 2);
+                {
+                setState(477);
+                referenceType();
+                }
+                break;
+            }
+        }
+        catch (RecognitionException re) {
+            _localctx.exception = re;
+            _errHandler.reportError(this, re);
+            _errHandler.recover(this, re);
+        }
+        finally {
+            exitRule();
+        }
+        return _localctx;
+    }
 
-	public static class PrimitiveTypeContext extends ParserRuleContext {
-		public NumericTypeContext numericType() {
-			return getRuleContext(NumericTypeContext.class,0);
-		}
-		public List<AnnotationContext> annotation() {
-			return getRuleContexts(AnnotationContext.class);
-		}
-		public AnnotationContext annotation(int i) {
-			return getRuleContext(AnnotationContext.class,i);
-		}
-		public PrimitiveTypeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_primitiveType; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterPrimitiveType(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitPrimitiveType(this);
-		}
-	}
+    public static class PrimitiveTypeContext extends ParserRuleContext {
+        public NumericTypeContext numericType() {
+            return getRuleContext(NumericTypeContext.class,0);
+        }
+        public List<AnnotationContext> annotation() {
+            return getRuleContexts(AnnotationContext.class);
+        }
+        public AnnotationContext annotation(int i) {
+            return getRuleContext(AnnotationContext.class,i);
+        }
+        public PrimitiveTypeContext(ParserRuleContext parent, int invokingState) {
+            super(parent, invokingState);
+        }
+        @Override public int getRuleIndex() { return RULE_primitiveType; }
+        @Override
+        public void enterRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterPrimitiveType(this);
+        }
+        @Override
+        public void exitRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitPrimitiveType(this);
+        }
+    }
 
-	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
-		PrimitiveTypeContext _localctx = new PrimitiveTypeContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_primitiveType);
-		int _la;
-		try {
-			setState(494);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(483);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==AT) {
-					{
-					{
-					setState(480);
-					annotation();
-					}
-					}
-					setState(485);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(486);
-				numericType();
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(490);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==AT) {
-					{
-					{
-					setState(487);
-					annotation();
-					}
-					}
-					setState(492);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(493);
-				match(BOOLEAN);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
+    public final PrimitiveTypeContext primitiveType() throws RecognitionException {
+        PrimitiveTypeContext _localctx = new PrimitiveTypeContext(_ctx, getState());
+        enterRule(_localctx, 4, RULE_primitiveType);
+        int _la;
+        try {
+            setState(494);
+            _errHandler.sync(this);
+            switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+            case 1:
+                enterOuterAlt(_localctx, 1);
+                {
+                setState(483);
+                _errHandler.sync(this);
+                _la = _input.LA(1);
+                while (_la==AT) {
+                    {
+                    {
+                    setState(480);
+                    annotation();
+                    }
+                    }
+                    setState(485);
+                    _errHandler.sync(this);
+                    _la = _input.LA(1);
+                }
+                setState(486);
+                numericType();
+                }
+                break;
+            case 2:
+                enterOuterAlt(_localctx, 2);
+                {
+                setState(490);
+                _errHandler.sync(this);
+                _la = _input.LA(1);
+                while (_la==AT) {
+                    {
+                    {
+                    setState(487);
+                    annotation();
+                    }
+                    }
+                    setState(492);
+                    _errHandler.sync(this);
+                    _la = _input.LA(1);
+                }
+                setState(493);
+                match(BOOLEAN);
+                }
+                break;
+            }
+        }
+        catch (RecognitionException re) {
+            _localctx.exception = re;
+            _errHandler.reportError(this, re);
+            _errHandler.recover(this, re);
+        }
+        finally {
+            exitRule();
+        }
+        return _localctx;
+    }
 
-	public static class NumericTypeContext extends ParserRuleContext {
-		public IntegralTypeContext integralType() {
-			return getRuleContext(IntegralTypeContext.class,0);
-		}
-		public FloatingPointTypeContext floatingPointType() {
-			return getRuleContext(FloatingPointTypeContext.class,0);
-		}
-		public NumericTypeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_numericType; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterNumericType(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitNumericType(this);
-		}
-	}
+    public static class NumericTypeContext extends ParserRuleContext {
+        public IntegralTypeContext integralType() {
+            return getRuleContext(IntegralTypeContext.class,0);
+        }
+        public FloatingPointTypeContext floatingPointType() {
+            return getRuleContext(FloatingPointTypeContext.class,0);
+        }
+        public NumericTypeContext(ParserRuleContext parent, int invokingState) {
+            super(parent, invokingState);
+        }
+        @Override public int getRuleIndex() { return RULE_numericType; }
+        @Override
+        public void enterRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).enterNumericType(this);
+        }
+        @Override
+        public void exitRule(ParseTreeListener listener) {
+            if ( listener instanceof Java8Listener ) ((Java8Listener)listener).exitNumericType(this);
+        }
+    }
 
-	public final NumericTypeContext numericType() throws RecognitionException {
-		NumericTypeContext _localctx = new NumericTypeContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_numericType);
-		try {
-			setState(498);
-			_errHandler.sync(this);
+    public final NumericTypeContext numericType() throws RecognitionException {
+        NumericTypeContext _localctx = new NumericTypeContext(_ctx, getState());
+        enterRule(_localctx, 6, RULE_numericType);
+        try {
+            setState(498);
+    		_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case BYTE:
 			case CHAR:
