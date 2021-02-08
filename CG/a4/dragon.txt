@@ -1,0 +1,11 @@
+"X"         // axiom
+"F"         // F-string
+""          // f-string
+"X+YF+"     // X-string
+"-FX-Y"     // Y-string
+90          // angle
+0           // start direction
+0.5         // Start at x = 0.5 * width
+0.4        // Start at y = 0.5 * height
+0.5         // Initial line length is 0.5 * height
+0.7         // Reduction factor for next generation
